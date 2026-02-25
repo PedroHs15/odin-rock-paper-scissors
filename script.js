@@ -50,46 +50,64 @@ function playRound(humanChoice, computerChoice) {
     }
     console.log(`${humanChoice} x ${computerChoice}`);
     if (humanChoice === computerChoice) {
-        console.log('Resultado: Empate');
-        return `Placar: Você ${humanScore} x ${computerScore} Computador`;
+        console.log('Empate');
+        return `Você ${humanScore} x ${computerScore} Computador`;
     }
 
     if (humanChoice === 'Pedra') {
         if (computerChoice === 'Tesoura') {
-            console.log('Resultado: Você ganhou!');
+            console.log('Vitória!');
             ++humanScore;
-            return `Placar: Você ${humanScore} x ${computerScore} Computador`;
+            return `Você ${humanScore} x ${computerScore} Computador`;
         }
         else {
-            console.log('Resultado: Você perdeu, tente novamente.');
+            console.log('Derrota');
             ++computerScore;
-            return `Placar: Você ${humanScore} x ${computerScore} Computador`;
+            return `Você ${humanScore} x ${computerScore} Computador`;
         }
     }
 
     if (humanChoice === 'Papel') {
         if (computerChoice === 'Pedra') {
-            console.log('Resultado: Você ganhou!');
+            console.log('Vitória!');
             ++humanScore;
-            return `Placar: Você ${humanScore} x ${computerScore} Computador`;
+            return `Você ${humanScore} x ${computerScore} Computador`;
         }
         else {
-            console.log('Resultado: Você perdeu, tente novamente.');
+            console.log('Derrota');
             ++computerScore;
-            return `Placar: Você ${humanScore} x ${computerScore} Computador`;
+            return `Você ${humanScore} x ${computerScore} Computador`;
         }
     }
 
     if (humanChoice === 'Tesoura') {
         if (computerChoice === 'Papel') {
-            console.log('Resultado: Você ganhou!');
+            console.log('Vitória!');
             ++humanScore;            
-            return `Placar: Você ${humanScore} x ${computerScore} Computador`;
+            return `Você ${humanScore} x ${computerScore} Computador`;
         }
         else {
-            console.log('Resultado: Você perdeu, tente novamente.');
+            console.log('Derrota');
             ++computerScore;
-            return `Placar: Você ${humanScore} x ${computerScore} Computador`;
+            return `
+            Você ${humanScore} x ${computerScore} Computador`;
         }
+    }
+}
+
+function playGame() {
+    humanScore = 0;
+    computerScore = 0;
+    for (let i = 1; i <= 5; i++) {
+        console.log(playRound(getHumanChoice(), getComputerChoice()));
+    }
+    if (humanScore === computerScore) {
+        return 'Resultado: Empate'
+    }
+    else if (humanScore > computerScore) {
+        return 'Resultado: Parabéns! você ganhou uma MD5'
+    }
+    else {
+        return 'Resultado: Derrota'
     }
 }
